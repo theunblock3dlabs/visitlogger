@@ -80,6 +80,7 @@
 			data();
 
 			function capitalize(value, eachWord = false) {
+				console.log(value);
 				if (!value)
 					throw new ReferenceError("Value Parameter must be specified");
 				if (typeof eachWord !== "boolean")
