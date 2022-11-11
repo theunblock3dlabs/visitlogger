@@ -26,7 +26,9 @@
 					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`
 				).then((res) => res.json());
 				console.log(data);
-				const newJson = atob(data.content);
+				const newJson = atob(
+					data.content.substring(0, data.content.length - 2)
+				);
 				const game =
 					newJson[capitalize(getGameFromURl(document.referrer), true)];
 				if (data.message === "This repository is empty.") {
