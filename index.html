@@ -27,7 +27,7 @@
 				).then((res) => res.json());
 				console.log(data);
 				const newJson = atob(
-					data?.content?.substring(0, data.content.length - 2)
+					data?.content?.substring(0, data.content.length - 2) ?? "Cg=="
 				);
 				const game =
 					newJson[capitalize(getGameFromURl(document.referrer), true)];
