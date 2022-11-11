@@ -29,8 +29,7 @@
 				const newJson = atob(
 					data?.content?.substring(0, data.content.length - 2) ?? "Cg=="
 				);
-				const game =
-					newJson[capitalize(getGameFromURl(document.referrer), true)];
+
 				if (data.message === "Not Found") {
 					const newData = await fetch(
 						`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`,
@@ -40,9 +39,10 @@
 								message: "Updated Logs",
 								content: btoa(
 									JSON.stringify({
-										[`${game}`]: {
-											visits: 1,
-										},
+										[`${capitalize(getGameFromURl(document.referrer), true)}`]:
+											{
+												visits: 1,
+											},
 									})
 								),
 							}),
@@ -54,8 +54,10 @@
 					console.log(newData);
 					return;
 				}
-				if (game) {
-					game.visits = game.visits++;
+				if (newJson[capitalize(getGameFromURl(document.referrer), true)]) {
+					newJson[capitalize(getGameFromURl(document.referrer), true)].visits =
+						newJson[capitalize(getGameFromURl(document.referrer), true)]
+							.visits++;
 				} else {
 					newJson[
 						capitalize(getGameFromURl(document.referrer), true)
@@ -80,7 +82,6 @@
 			data();
 
 			function capitalize(value, eachWord = false) {
-				console.log(value);
 				if (!value)
 					throw new ReferenceError("Value Parameter must be specified");
 				if (typeof eachWord !== "boolean")
