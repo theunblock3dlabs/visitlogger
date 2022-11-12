@@ -31,6 +31,7 @@
 				);
 
 				if (data.message === "Not Found") {
+					console.log("not found");
 					const newData = await fetch(
 						`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`,
 						{
@@ -63,6 +64,8 @@
 						capitalize(getGameFromURl(document.referrer), true)
 					].visits = 1;
 				}
+				console.log("foundcontinuing");
+
 				const test = await fetch(
 					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`,
 					{
