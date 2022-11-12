@@ -24,9 +24,7 @@
 				let data = await fetch(
 					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`
 				).then((res) => res.json());
-				const newJson = atob(
-					data?.content?.substring(0, data.content.length - 2) ?? "Cg=="
-				);
+				const newJson = atob(data?.content ?? "Cg==\n");
 
 				if (data.message === "Not Found") {
 					console.log("not found");
