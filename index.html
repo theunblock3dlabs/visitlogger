@@ -23,9 +23,8 @@
 					newDate.getFullYear();
 
 				let data = await fetch(
-					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`
+					`https://api.github.com/repos/TheUnblockedLabs/datavisualizer/contents/${dateShort}.txt`
 				).then((res) => res.json());
-				console.log(data);
 				const newJson = atob(
 					data?.content?.substring(0, data.content.length - 2) ?? "Cg=="
 				);
@@ -33,7 +32,7 @@
 				if (data.message === "Not Found") {
 					console.log("not found");
 					const newData = await fetch(
-						`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`,
+						`https://api.github.com/repos/TheUnblockedLabs/datavisualizer/contents/${dateShort}.txt`,
 						{
 							method: "PUT",
 							body: JSON.stringify({
@@ -52,7 +51,6 @@
 							},
 						}
 					).then((res) => res.json());
-					console.log(newData);
 					return;
 				}
 				if (newJson[capitalize(getGameFromURl(document.referrer), true)]) {
@@ -67,7 +65,7 @@
 				console.log("foundcontinuing");
 
 				const test = await fetch(
-					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`,
+					`https://api.github.com/repos/TheUnblockedLabs/datavisualizer/contents/${dateShort}.txt`,
 					{
 						method: "PUT",
 						body: JSON.stringify({
@@ -80,7 +78,6 @@
 						},
 					}
 				).then((res) => res.json());
-				console.log(test);
 			}
 			data();
 
