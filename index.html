@@ -72,7 +72,7 @@
 						body: JSON.stringify({
 							message: `Updated Logs`,
 							sha: data.sha,
-							content: btoa(newJson),
+							content: btoa(JSON.stringify(newJson)),
 						}),
 						headers: {
 							Authorization: auth(),
