@@ -26,7 +26,11 @@
 				let data = await fetch(
 					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt?ref=main`
 				).then((res) => res.json());
-				const newJson = JSON.parse(atob(data?.content ?? "Cg==\n") ?? "{}");
+				const newJson = JSON.parse(
+					atob(data?.content ?? "Cg==\n") != " "
+						? atob(data?.content ?? "Cg==\n")
+						: "{}"
+				);
 
 				if (data.message === "Not Found") {
 					console.log("not found");
