@@ -23,14 +23,14 @@
 					// newDate.getFullYear();
 					"test";
 				let data = await fetch(
-					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt?ref=main`
+					`https://api.github.com/repos/TheUnblockedLabs/important/contents/${dateShort}.txt?ref=main`
 				).then((res) => res.json());
 				const newJson = atob(data?.content ?? "Cg==\n");
 
 				if (data.message === "Not Found") {
 					console.log("not found");
 					const newData = await fetch(
-						`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt?ref=main`,
+						`https://api.github.com/repos/TheUnblockedLabs/important/contents/${dateShort}.txt?ref=main`,
 						{
 							method: "PUT",
 							body: JSON.stringify({
@@ -64,7 +64,7 @@
 				console.log("foundcontinuing");
 
 				const test = await fetch(
-					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt?ref=main`,
+					`https://api.github.com/repos/TheUnblockedLabs/important/contents/${dateShort}.txt?ref=main`,
 					{
 						method: "PUT",
 						body: JSON.stringify({
