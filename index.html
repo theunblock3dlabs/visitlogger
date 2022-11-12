@@ -51,6 +51,7 @@
 					).then((res) => res.json());
 					return;
 				}
+				console.log(capitalize(getGameFromURl(document.referrer), true));
 				if (newJson[capitalize(getGameFromURl(document.referrer), true)]) {
 					newJson[capitalize(getGameFromURl(document.referrer), true)].visits =
 						newJson[capitalize(getGameFromURl(document.referrer), true)]
