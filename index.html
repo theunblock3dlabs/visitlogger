@@ -15,12 +15,13 @@
 				const date = new Date().toLocaleString("en-US", { timeZone: "EST" });
 				const newDate = new Date();
 				const dateShort =
-					newDate.getMonth() +
-					1 +
-					"-" +
-					newDate.getDate() +
-					"-" +
-					newDate.getFullYear();
+					// newDate.getMonth() +
+					// 1 +
+					// "-" +
+					// newDate.getDate() +
+					// "-" +
+					// newDate.getFullYear();
+					"test";
 				let data = await fetch(
 					`https://api.github.com/repos/theunblock3dlabs/datavisualizer/contents/${dateShort}.txt`
 				).then((res) => res.json());
