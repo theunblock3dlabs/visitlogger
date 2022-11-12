@@ -31,6 +31,7 @@
 						? "{}"
 						: atob(data?.content ?? "Cg==\n")
 				);
+				const referrer = document.referrer;
 
 				if (data.message === "Not Found") {
 					console.log("not found");
@@ -42,10 +43,9 @@
 								message: "Updated Logs",
 								content: btoa(
 									JSON.stringify({
-										[`${capitalize(getGameFromURl(document.referrer), true)}`]:
-											{
-												visits: 1,
-											},
+										[`${capitalize(getGameFromURl(referrer), true)}`]: {
+											visits: 1,
+										},
 									})
 								),
 							}),
@@ -56,17 +56,16 @@
 					).then((res) => res.json());
 					return;
 				}
-				console.log(capitalize(getGameFromURl(document.referrer), true));
-				if (newJson[capitalize(getGameFromURl(document.referrer), true)]) {
-					newJson[capitalize(getGameFromURl(document.referrer), true)].visits =
-						newJson[capitalize(getGameFromURl(document.referrer), true)]
-							.visits + 1;
+				console.log(capitalize(getGameFromURl(referrer), true));
+				if (newJson[capitalize(getGameFromURl(referrer), true)]) {
+					newJson[capitalize(getGameFromURl(referrer), true)].visits =
+						newJson[capitalize(getGameFromURl(referrer), true)].visits + 1;
 					console.log(
 						"adding more visits",
-						newJson[capitalize(getGameFromURl(document.referrer), true)]
+						newJson[capitalize(getGameFromURl(referrer), true)]
 					);
 				} else {
-					newJson[capitalize(getGameFromURl(document.referrer), true)] = {
+					newJson[capitalize(getGameFromURl(referrer), true)] = {
 						visits: 1,
 					};
 				}
@@ -124,6 +123,7 @@
 			function getGameFromURl(url) {
 				url.replace("https://sites.google.com/view/mathlabs/gxmes/", "");
 				url.replace("https://sites.google.com/view/cyberlabs/gxmes/", "");
+				url.replace("io-games/", "");
 				url.replace(/\?authuser=\d/, "");
 				url.replace("-", " ");
 				return url;
