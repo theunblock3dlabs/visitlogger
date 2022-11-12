@@ -60,7 +60,7 @@
 				if (newJson[capitalize(getGameFromURl(document.referrer), true)]) {
 					newJson[capitalize(getGameFromURl(document.referrer), true)].visits =
 						newJson[capitalize(getGameFromURl(document.referrer), true)]
-							.visits++;
+							.visits + 1;
 					console.log(
 						"adding more visits",
 						newJson[capitalize(getGameFromURl(document.referrer), true)]
